@@ -1,3 +1,35 @@
 <h1>
-  {{title}}
+slider: {{ currentSliderValue }}
+step: {{ currentStepValue }}
 </h1>
+
+  <div>
+  <input style="width:300px" type="range" min="50" max="500" step="25" [(ngModel)]="currentSliderValue" (ngModelChange)="onSliderChange($event)" />
+    jo
+  </div>
+
+  <br><br>
+
+
+<div id="container" style="border: 10px solid gray; width: 300px; height: 300px; position:relative; overflow:hidden;">
+  <div *ngFor="let voucher of vouchers"  style="position:absolute; width:100%; left: 0; top: 0; height: 100%; " [style.background-image]="voucher.src">
+    
+    <!-- a voucher can live here -->
+      <div style="position: relative; width:100%; height: 100%; background-color:lime;" [@voucherState]="voucher.state">
+        <img style="position:absolute" src="{{ voucher.src }}"/> 
+        
+        <div style="position:absolute;  width:100%; height: 100%; display:flex; justify-content: center; align-items: center; ">
+
+          <div style="background-color: rgba(50,50,50,0.8);">
+            {{ voucher.value }} € 
+          </div>
+        
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+  
+
