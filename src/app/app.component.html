@@ -1,17 +1,8 @@
-<h1>
-slider: {{ currentSliderValue }}
-step: {{ currentStepValue }}
-</h1>
-
-  <div>
-  <input style="width:300px" type="range" min="50" max="500" step="25" [(ngModel)]="currentSliderValue" (ngModelChange)="onSliderChange($event)" />
-    jo
-  </div>
-
-  <br><br>
 
 
-<div id="container" style="border: 10px solid gray; width: 300px; height: 300px; position:relative; overflow:hidden;">
+
+
+<div id="container" style="border: 0px solid gray; width: 300px; height: 300px; position:relative; overflow:hidden;">
   <div *ngFor="let voucher of vouchers"  style="position:absolute; width:100%; left: 0; top: 0; height: 100%; " [style.background-image]="voucher.src">
     
     <!-- a voucher can live here -->
@@ -20,7 +11,7 @@ step: {{ currentStepValue }}
         
         <div style="position:absolute;  width:100%; height: 100%; display:flex; justify-content: center; align-items: center; ">
 
-          <div style="background-color: rgba(50,50,50,0.8);">
+          <div style="background-color: rgba(20,20,20,0.9); color: white; padding: 30px; font-size: 22px;">
             {{ voucher.value }} € 
           </div>
         
@@ -28,6 +19,14 @@ step: {{ currentStepValue }}
       </div>
   </div>
 </div>
+
+
+<br><br>
+  <div>
+  <!--<input style="width:300px" type="range" min="50" max="500" step="25" [(ngModel)]="currentSliderValue" (ngModelChange)="onSliderChange($event)" />-->
+  <input style="width:300px" type="range" min="0" [max]="vouchers.length -1" step="1" [(ngModel)]="currentSliderValue" (ngModelChange)="checkVouchers($event)" />
+  </div>
+
 
 
 
